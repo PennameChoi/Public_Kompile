@@ -7,11 +7,11 @@ public partial class NavTileMeshEditorWindow
 {
     private struct VirtualVertex
     {
-        private const float heightUnitSize = 0.125f;
+        private const float heightUnitSize = 0.125f;    //높이값의 단위. (h * 0.125f). 0 ~ 1의 값을 가진다.
 
-        private readonly int   index;
-        private readonly int   virtualIndex;
-        private readonly float height;
+        private readonly int   index;           // 실제로 Mesh.triangles에 저장된 인덱스(순서)
+        private readonly int   virtualIndex;    // 입력값(inputHeights)의 인덱스(순서)
+        private readonly float height;          // 입력한 높이값
 
         public VirtualVertex(int index, int vIndex, float h)
         {
@@ -86,7 +86,7 @@ public partial class NavTileMeshEditorWindow : EditorWindow
         isSmall = GUILayout.Toggle(isSmall, "Is Small");
 
         GUILayout.Space(5);
-        GUILayout.Label("Input Values", EditorStyles.boldLabel);
+        GUILayout.Label("Input Vertex Height", EditorStyles.boldLabel);
         
         float fieldWidth = 50; // IntField의 너비
         float spacing    = 10; // 필드 간의 간격
